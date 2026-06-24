@@ -1,5 +1,6 @@
 import { getDictionary, locales, type Locale } from "@/lib/dictionaries";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -18,8 +19,17 @@ export default async function Home({
       {/* Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          <div className="text-white font-bold text-lg tracking-wide">
-            Арсенал Таймас
+          <div className="flex items-center gap-3">
+            <Image
+              src="/arsenal-times.png"
+              alt="Арсенал Таймас"
+              width={40}
+              height={40}
+              className="rounded"
+            />
+            <span className="text-white font-bold text-lg tracking-wide">
+              Арсенал Таймас
+            </span>
           </div>
           <div className="flex items-center gap-6">
             <nav className="hidden md:flex items-center gap-8">
