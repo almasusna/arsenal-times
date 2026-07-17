@@ -5,6 +5,12 @@ import { locales, defaultLocale } from "@/lib/dictionaries";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Legacy alias: old /kz links keep working, redirected to /kk
+  if (pathname === "/kz" || pathname.startsWith("/kz/")) {
+    request.nextUrl.pathname = pathname.replace(/^\/kz/, "/kk");
+    return NextResponse.redirect(request.nextUrl);
+  }
+
   // Check if the pathname already has a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
