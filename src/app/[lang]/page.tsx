@@ -1,215 +1,367 @@
-import { getDictionary, locales, type Locale } from "@/lib/dictionaries";
-import { LanguageSwitcher } from "@/components/language-switcher";
 import Image from "next/image";
+import {
+  getDictionary,
+  contactInfo,
+  type Locale,
+} from "@/lib/dictionaries";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
-}
+import heroImg from "../../../public/images/hero.jpg";
+import aboutImg from "../../../public/images/about.jpg";
+import huntingImg from "../../../public/images/hunting.jpg";
+import sportImg from "../../../public/images/sport.jpg";
+import ammoImg from "../../../public/images/ammo.jpg";
+import opticsImg from "../../../public/images/optics.jpg";
+import serviceImg from "../../../public/images/service.jpg";
+import consultImg from "../../../public/images/consult.jpg";
+import hunterDogImg from "../../../public/images/hunter-dog.jpg";
+import clayImg from "../../../public/images/clay.jpg";
 
-export default async function Home({
+const directionImages = [
+  huntingImg,
+  sportImg,
+  ammoImg,
+  opticsImg,
+  serviceImg,
+  consultImg,
+];
+
+export default async function Page({
   params,
 }: {
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const t = getDictionary(lang as Locale);
+  const locale = lang as Locale;
+  const t = getDictionary(locale);
 
   return (
     <>
-      {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e]/95 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      {/* Topbar */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-ink/80 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
+          <a href="#top" className="flex items-center gap-3">
             <Image
               src="/arsenal-times.png"
-              alt="Арсенал Таймас"
-              width={40}
-              height={40}
-              className="rounded"
+              alt="Arsenal Taimas"
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain"
             />
-            <span className="text-white font-bold text-lg tracking-wide">
-              Арсенал Таймас
+            <span className="font-display whitespace-nowrap text-[15px] font-medium uppercase tracking-[0.14em] max-[420px]:hidden">
+              Arsenal Taimas
             </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <nav className="hidden md:flex items-center gap-8">
-              <a
-                href="#about"
-                className="text-[#b8c5d6] hover:text-white transition-colors text-sm"
-              >
-                {t.nav.about}
-              </a>
-              <a
-                href="#services"
-                className="text-[#b8c5d6] hover:text-white transition-colors text-sm"
-              >
-                {t.nav.services}
-              </a>
-              <a
-                href="#contacts"
-                className="text-[#b8c5d6] hover:text-white transition-colors text-sm"
-              >
-                {t.nav.contacts}
-              </a>
-            </nav>
-            <LanguageSwitcher currentLang={lang as Locale} />
+          </a>
+          <nav className="hidden items-center gap-8 text-[13px] text-muted md:flex">
+            <a href="#about" className="transition-colors hover:text-paper">
+              {t.nav.about}
+            </a>
+            <a
+              href="#directions"
+              className="transition-colors hover:text-paper"
+            >
+              {t.nav.directions}
+            </a>
+            <a href="#contacts" className="transition-colors hover:text-paper">
+              {t.nav.contacts}
+            </a>
+          </nav>
+          <div className="flex items-center gap-4">
+            <a
+              href={contactInfo.phoneHref}
+              className="hidden text-[13px] font-medium text-paper transition-colors hover:text-brass lg:block"
+            >
+              {contactInfo.phone}
+            </a>
+            <LanguageSwitcher current={locale} />
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] text-white pt-32 pb-24 px-5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
-            {t.hero.title1}
-            <br />
-            <span className="text-[#e94560]">{t.hero.title2}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-[#b8c5d6] max-w-2xl mx-auto mb-10 leading-relaxed">
-            {t.hero.subtitle}
-          </p>
-          <a
-            href="#contacts"
-            className="inline-block bg-[#e94560] text-white px-10 py-4 rounded font-semibold text-lg transition-all hover:bg-[#d63851] hover:-translate-y-0.5"
-          >
-            {t.hero.cta}
-          </a>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-5 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#1a1a2e] mb-10">
-            {t.about.heading}
-          </h2>
-          <div className="space-y-5 text-gray-600 text-lg leading-relaxed mb-12">
-            <p>{t.about.p1}</p>
-            <p>{t.about.p2}</p>
+      <main id="top">
+        {/* Hero */}
+        <section className="relative flex min-h-[100dvh] items-end overflow-hidden">
+          <Image
+            src={heroImg}
+            alt=""
+            fill
+            priority
+            placeholder="blur"
+            sizes="100vw"
+            className="photo-tone object-cover object-[70%_center]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-ink/10" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+          <div className="relative mx-auto w-full max-w-[1400px] px-4 pb-24 pt-32 md:px-8 md:pb-32">
+            <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.24em] text-brass">
+              {t.hero.kicker}
+            </p>
+            <h1 className="font-display max-w-5xl text-4xl font-semibold uppercase leading-[0.98] tracking-tight md:text-6xl lg:text-7xl">
+              {t.hero.title1}
+              <br />
+              {t.hero.title2}
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-paper/75 md:text-lg">
+              {t.hero.subtitle}
+            </p>
+            <a
+              href="#contacts"
+              className="mt-10 inline-block bg-brass px-9 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-brass-bright active:translate-y-px"
+            >
+              {t.hero.cta}
+            </a>
           </div>
+        </section>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <h3 className="text-xl font-semibold text-[#1a1a2e] mb-6">
-              {t.about.requisites}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <span className="text-gray-500">{t.about.bin}</span>
-                <span className="ml-2 text-[#1a1a2e] font-medium">
-                  221140025076
-                </span>
-              </div>
-              <div>
-                <span className="text-gray-500">{t.about.director}</span>
-                <span className="ml-2 text-[#1a1a2e] font-medium">
-                  {t.about.directorName}
-                </span>
-              </div>
-              <div className="md:col-span-2">
-                <span className="text-gray-500">{t.about.address}</span>
-                <span className="ml-2 text-[#1a1a2e] font-medium">
-                  {t.about.addressValue}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-5 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#1a1a2e] mb-12">
-            {t.services.heading}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.services.items.map((item) => (
+        {/* Trust strip */}
+        <section className="border-b border-hairline">
+          <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-10 px-4 py-16 sm:grid-cols-2 md:px-8 lg:grid-cols-4 lg:gap-y-0">
+            {t.trust.map((item, i) => (
               <div
-                key={item.title}
-                className="bg-gray-50 border border-gray-200 rounded-lg p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
+                key={i}
+                className="reveal border-l border-hairline pl-6 lg:pr-8"
               >
-                <h3 className="text-base font-semibold text-[#1a1a2e] mb-3">
+                <div className="mb-3 h-px w-8 bg-brass" />
+                <h3 className="font-display text-lg font-medium uppercase tracking-wide">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {item.description}
+                <p className="mt-2 text-sm leading-relaxed text-muted">
+                  {item.desc}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contacts Section */}
-      <section id="contacts" className="py-20 px-5 bg-[#1a1a2e] text-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12">{t.contacts.heading}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-            <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                {t.contacts.phone}
-              </p>
-              <a
-                href="tel:+77075504282"
-                className="text-[#e94560] hover:underline text-lg"
-              >
-                8 (707) 550-42-82
-              </a>
+        {/* About */}
+        <section id="about" className="scroll-mt-16">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="reveal lg:col-span-6">
+                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+                  {t.about.heading}
+                </h2>
+                <p className="mt-8 text-lg leading-relaxed text-paper/85">
+                  {t.about.p1}
+                </p>
+                <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-muted">
+                  {t.about.p2}
+                </p>
+              </div>
+              <div className="reveal relative min-h-[320px] lg:col-span-6">
+                <Image
+                  src={aboutImg}
+                  alt=""
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="photo-tone object-cover"
+                />
+              </div>
             </div>
-            <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                {t.contacts.email}
-              </p>
-              <a
-                href="mailto:Statusman1304@gmail.com"
-                className="text-[#e94560] hover:underline text-lg"
-              >
-                Statusman1304@gmail.com
-              </a>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                {t.contacts.addressLabel}
-              </p>
-              <p className="text-[#b8c5d6]">{t.contacts.addressValue}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                {t.contacts.director}
-              </p>
-              <p className="text-[#b8c5d6]">{t.contacts.directorName}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                {t.contacts.deputy}
-              </p>
-              <p className="text-[#b8c5d6]">{t.contacts.deputyName}</p>
+
+            {/* Requisites */}
+            <div className="reveal mt-20 border-t border-hairline pt-10">
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.24em] text-brass">
+                {t.about.requisites}
+              </h3>
+              <dl className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <dt className="text-[13px] text-muted">{t.about.bin}</dt>
+                  <dd className="mt-1 font-medium">{t.about.binValue}</dd>
+                </div>
+                <div>
+                  <dt className="text-[13px] text-muted">{t.about.director}</dt>
+                  <dd className="mt-1 font-medium">{t.about.directorName}</dd>
+                </div>
+                <div>
+                  <dt className="text-[13px] text-muted">{t.about.deputy}</dt>
+                  <dd className="mt-1 font-medium">{t.about.deputyName}</dd>
+                </div>
+                <div>
+                  <dt className="text-[13px] text-muted">{t.about.address}</dt>
+                  <dd className="mt-1 font-medium">{t.about.addressValue}</dd>
+                </div>
+              </dl>
             </div>
           </div>
+        </section>
 
-          {/* Google Maps */}
-          <div className="rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3699.12960052553!2d69.40586083562997!3d53.285788708890244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424c94f0f51485bf%3A0x5cd5dcbec7fcfb2c!2sUl.mira%2018%2C%20Kokshetau%20020000!5e0!3m2!1sen!2skz!4v1782107985316!5m2!1sen!2skz"
-              width="100%"
-              height="350"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Арсенал Таймас"
-            />
+        {/* Directions */}
+        <section id="directions" className="scroll-mt-16 bg-ink-2">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+            <h2 className="font-display reveal text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+              {t.directions.heading}
+            </h2>
+            <p className="reveal mt-4 text-base text-muted">
+              {t.directions.sub}
+            </p>
+            <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {t.directions.items.map((item, i) => (
+                <article
+                  key={i}
+                  className={`reveal group relative overflow-hidden ${
+                    i === 0
+                      ? "aspect-[2/1] md:col-span-2"
+                      : i === 5
+                        ? "aspect-[2/1] md:col-span-3 md:aspect-[3/1]"
+                        : "aspect-square md:aspect-[1/1.05]"
+                  }`}
+                >
+                  <Image
+                    src={directionImages[i]}
+                    alt=""
+                    fill
+                    placeholder="blur"
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="photo-tone object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                    <h3 className="font-display text-2xl font-medium uppercase tracking-wide md:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-paper/70">
+                      {item.desc}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0f0f1a] text-gray-500 py-10 px-5">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <p>{t.footer.rights}</p>
-          <p>{t.footer.city}</p>
-        </div>
-      </footer>
+        {/* Audience */}
+        <section className="grid grid-cols-1 md:grid-cols-2">
+          {(
+            [
+              [t.audience.hunters, hunterDogImg],
+              [t.audience.shooters, clayImg],
+            ] as const
+          ).map(([panel, img], i) => (
+            <div
+              key={i}
+              className="group relative flex min-h-[70dvh] items-end overflow-hidden"
+            >
+              <Image
+                src={img}
+                alt=""
+                fill
+                placeholder="blur"
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="photo-tone object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/5" />
+              <div className="relative p-8 md:p-12">
+                <div className="mb-4 h-px w-10 bg-brass" />
+                <h3 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+                  {panel.title}
+                </h3>
+                <p className="mt-3 max-w-sm text-base leading-relaxed text-paper/75">
+                  {panel.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* Contacts */}
+        <section id="contacts" className="scroll-mt-16 border-t border-hairline">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+            <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
+              <div className="reveal lg:col-span-5">
+                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-6xl">
+                  {t.contacts.heading}
+                </h2>
+                <p className="mt-5 max-w-xs text-base leading-relaxed text-muted">
+                  {t.contacts.sub}
+                </p>
+              </div>
+              <div className="reveal lg:col-span-7">
+                <dl className="divide-y divide-hairline">
+                  <div className="grid grid-cols-1 gap-1 py-6 sm:grid-cols-3">
+                    <dt className="text-[13px] uppercase tracking-wider text-muted">
+                      {t.contacts.phone}
+                    </dt>
+                    <dd className="sm:col-span-2">
+                      <a
+                        href={contactInfo.phoneHref}
+                        className="font-display text-2xl font-medium tracking-wide transition-colors hover:text-brass md:text-3xl"
+                      >
+                        {contactInfo.phone}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-1 gap-1 py-6 sm:grid-cols-3">
+                    <dt className="text-[13px] uppercase tracking-wider text-muted">
+                      {t.contacts.email}
+                    </dt>
+                    <dd className="sm:col-span-2">
+                      <a
+                        href={contactInfo.emailHref}
+                        className="text-lg font-medium transition-colors hover:text-brass"
+                      >
+                        {contactInfo.email}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-1 gap-1 py-6 sm:grid-cols-3">
+                    <dt className="text-[13px] uppercase tracking-wider text-muted">
+                      {t.contacts.address}
+                    </dt>
+                    <dd className="text-base leading-relaxed sm:col-span-2">
+                      {t.contacts.addressValue}
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-1 gap-1 py-6 sm:grid-cols-3">
+                    <dt className="text-[13px] uppercase tracking-wider text-muted">
+                      {t.contacts.director}
+                    </dt>
+                    <dd className="text-base sm:col-span-2">
+                      {t.contacts.directorName}
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-1 gap-1 py-6 sm:grid-cols-3">
+                    <dt className="text-[13px] uppercase tracking-wider text-muted">
+                      {t.contacts.deputy}
+                    </dt>
+                    <dd className="text-base sm:col-span-2">
+                      {t.contacts.deputyName}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-hairline bg-ink-2">
+          <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-8">
+            <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/arsenal-times.png"
+                  alt="Arsenal Taimas"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
+                <span className="font-display text-sm font-medium uppercase tracking-[0.14em]">
+                  Arsenal Taimas
+                </span>
+              </div>
+              <p className="max-w-xl text-[13px] leading-relaxed text-muted">
+                {t.footer.legal}
+              </p>
+            </div>
+            <div className="mt-10 flex flex-col gap-2 border-t border-hairline pt-6 text-[12px] text-muted md:flex-row md:justify-between">
+              <span>{t.footer.rights}</span>
+              <span>{t.footer.city}</span>
+            </div>
+          </div>
+        </footer>
+      </main>
     </>
   );
 }

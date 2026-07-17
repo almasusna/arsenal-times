@@ -1,30 +1,27 @@
 import Link from "next/link";
-import { type Locale } from "@/lib/dictionaries";
+import { locales, localeNames, type Locale } from "@/lib/dictionaries";
 
-const labels: Record<Locale, string> = {
-  ru: "Рус",
-  kz: "Қаз",
-  en: "Eng",
-};
-
-export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
+export function LanguageSwitcher({ current }: { current: Locale }) {
   return (
-    <div className="flex items-center gap-1 text-sm">
-      {(Object.entries(labels) as [Locale, string][]).map(([locale, label]) =>
-        locale === currentLang ? (
-          <span key={locale} className="text-white font-semibold px-2 py-1">
-            {label}
+    <nav aria-label="Language" className="flex items-center">
+      {locales.map((locale) =>
+        locale === current ? (
+          <span
+            key={locale}
+            className="whitespace-nowrap px-2 py-1 text-[12px] font-semibold tracking-wide text-brass"
+          >
+            {localeNames[locale]}
           </span>
         ) : (
           <Link
             key={locale}
             href={`/${locale}`}
-            className="text-[#b8c5d6] hover:text-white transition-colors px-2 py-1"
+            className="whitespace-nowrap px-2 py-1 text-[12px] font-medium tracking-wide text-muted transition-colors hover:text-paper"
           >
-            {label}
+            {localeNames[locale]}
           </Link>
         ),
       )}
-    </div>
+    </nav>
   );
 }

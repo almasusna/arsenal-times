@@ -1,21 +1,38 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Oswald, Manrope } from "next/font/google";
 import "../globals.css";
-import { locales } from "@/lib/dictionaries";
+import { locales, getDictionary, type Locale } from "@/lib/dictionaries";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin", "cyrillic"],
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin", "latin-ext", "cyrillic"],
 });
 
-export const metadata: Metadata = {
-  title: "Арсенал Таймас — Оружие и патроны в Кокшетау",
-  description:
-    "ТОО «Арсенал Таймас» — разработка, производство, ремонт, торговля, коллекционирование гражданского и служебного оружия и патронов к нему. Кокшетау, Казахстан.",
-};
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+});
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const t = getDictionary(lang as Locale);
+  return {
+    title: t.meta.title,
+    description: t.meta.description,
+    openGraph: {
+      title: t.meta.title,
+      description: t.meta.description,
+      images: ["/arsenal-times.png"],
+    },
+  };
 }
 
 export default async function LangLayout({
@@ -26,11 +43,13 @@ export default async function LangLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const htmlLang = lang === "kz" ? "kk" : lang;
 
   return (
-    <html lang={htmlLang} className={`${geistSans.variable} antialiased`}>
-      <body className="min-h-screen flex flex-col">{children}</body>
+    <html
+      lang={lang}
+      className={`${oswald.variable} ${manrope.variable} antialiased`}
+    >
+      <body className="min-h-screen bg-ink text-paper">{children}</body>
     </html>
   );
 }
