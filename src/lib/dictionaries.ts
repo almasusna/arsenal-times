@@ -52,7 +52,7 @@ const dictionaries = {
     about: {
       heading: "О компании",
       p1: "ТОО «Арсенал Таймас» специализируется на официальных поставках современного гражданского оружия, боеприпасов и комплектующих для охоты и спортивной стрельбы.",
-      p2: "Мы не производим оружие сами. Наша задача: отбирать проверенных мировых производителей и официально поставлять их продукцию охотникам и спортивным стрелкам Казахстана.",
+      p2: "Наша задача: отбирать проверенных мировых производителей и официально поставлять их продукцию охотникам и спортивным стрелкам Казахстана.",
       requisites: "Реквизиты",
       bin: "БИН",
       binValue: "221140025076",
@@ -164,7 +164,7 @@ const dictionaries = {
     about: {
       heading: "Компания туралы",
       p1: "«Арсенал Таймас» ЖШС аңшылық пен спорттық атуға арналған заманауи азаматтық қаруды, оқ-дәрілер мен жабдықтарды ресми жеткізуге маманданған.",
-      p2: "Біз қаруды өзіміз өндірмейміз. Біздің міндетіміз: сенімді әлемдік өндірушілерді таңдап, олардың өнімін Қазақстанның аңшылары мен спортшы атушыларына ресми жеткізу.",
+      p2: "Біздің міндетіміз: сенімді әлемдік өндірушілерді таңдап, олардың өнімін Қазақстанның аңшылары мен спортшы атушыларына ресми жеткізу.",
       requisites: "Деректемелер",
       bin: "БСН",
       binValue: "221140025076",
@@ -276,7 +276,7 @@ const dictionaries = {
     about: {
       heading: "About the company",
       p1: "Arsenal Taimas LLP specializes in the official supply of modern civilian firearms, ammunition and components for hunting and sport shooting.",
-      p2: "We do not manufacture firearms ourselves. Our job is to select trusted global manufacturers and officially deliver their products to hunters and sport shooters across Kazakhstan.",
+      p2: "Our job is to select trusted global manufacturers and officially deliver their products to hunters and sport shooters across Kazakhstan.",
       requisites: "Company details",
       bin: "BIN",
       binValue: "221140025076",
@@ -387,7 +387,7 @@ const dictionaries = {
     about: {
       heading: "公司简介",
       p1: "Arsenal Taimas 有限责任公司专注于官方供应用于狩猎和射击运动的现代民用枪械、弹药及配件。",
-      p2: "我们不自行生产枪械。我们的职责是甄选全球可靠制造商，并将其产品正式供应给哈萨克斯坦的猎人和射击运动爱好者。",
+      p2: "我们的职责是甄选全球可靠制造商，并将其产品正式供应给哈萨克斯坦的猎人和射击运动爱好者。",
       requisites: "公司信息",
       bin: "商业登记号",
       binValue: "221140025076",
@@ -499,7 +499,7 @@ const dictionaries = {
     about: {
       heading: "Hakkımızda",
       p1: "Arsenal Taimas LLP, avcılık ve sportif atıcılık için modern sivil silahların, mühimmatın ve aksesuarların resmi tedarikinde uzmanlaşmıştır.",
-      p2: "Silah üretimi yapmıyoruz. Görevimiz, güvenilir küresel üreticileri seçmek ve ürünlerini Kazakistan'daki avcılara ve sportif atıcılara resmi olarak ulaştırmaktır.",
+      p2: "Görevimiz, güvenilir küresel üreticileri seçmek ve ürünlerini Kazakistan'daki avcılara ve sportif atıcılara resmi olarak ulaştırmaktır.",
       requisites: "Şirket bilgileri",
       bin: "BIN",
       binValue: "221140025076",
