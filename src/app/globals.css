@@ -141,10 +141,68 @@ body {
 .rise-d4 {
   animation-delay: 0.56s;
 }
+.rise-d5 {
+  animation-delay: 0.72s;
+}
 
 /* Drawn brass hairline accent */
 .hairline-x {
   transform-origin: 0 50%;
+}
+
+/* Process timeline: vertical brass line that draws top-to-bottom on scroll.
+   Base state is fully drawn so unsupported / reduced-motion browsers see it. */
+.process-line {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+@keyframes draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Subtle hero parallax drift (image lags the scroll). */
+@keyframes hero-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(6%);
+  }
+}
+
+/* Mobile menu entrance */
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu {
+  animation: menu-fade 0.25s ease-out both;
+}
+
+.mm-item {
+  animation: menu-item 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -159,6 +217,11 @@ body {
       animation-timeline: view();
       animation-range: entry 0% entry 50%;
     }
+    .process-line {
+      animation: draw-y 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 35% cover 65%;
+    }
   }
 
   @supports (animation-timeline: scroll()) {
@@ -171,13 +234,23 @@ body {
       animation-timeline: scroll(root);
       animation-range: 0 180px;
     }
+    .hero-parallax {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+      will-change: transform;
+    }
   }
 }
 
 /* Respect reduced motion: everything settles to its final, static state */
 @media (prefers-reduced-motion: reduce) {
   .kenburns,
-  .rise {
+  .rise,
+  .hero-parallax,
+  .process-line,
+  .mobile-menu,
+  .mm-item {
     animation: none;
   }
   #site-header {

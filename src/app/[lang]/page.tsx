@@ -5,6 +5,15 @@ import {
   type Locale,
 } from "@/lib/dictionaries";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MobileNav } from "@/components/mobile-nav";
+
+const mapQuery = "Ыбырая Алтынсарина 18, Кокшетау, Казахстан";
+const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(
+  mapQuery,
+)}&z=15&output=embed`;
+const mapDirections = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  mapQuery,
+)}`;
 
 import heroImg from "../../../public/images/hero.jpg";
 import aboutImg from "../../../public/images/about.jpg";
@@ -79,7 +88,20 @@ export default async function Page({
             >
               {contactInfo.phone}
             </a>
-            <LanguageSwitcher current={locale} />
+            <div className="hidden md:block">
+              <LanguageSwitcher current={locale} />
+            </div>
+            <MobileNav
+              current={locale}
+              phone={contactInfo.phone}
+              phoneHref={contactInfo.phoneHref}
+              items={[
+                { href: "#about", label: t.nav.about },
+                { href: "#directions", label: t.nav.directions },
+                { href: "#process", label: t.nav.process },
+                { href: "#contacts", label: t.nav.contacts },
+              ]}
+            />
           </div>
         </div>
       </header>
@@ -88,15 +110,17 @@ export default async function Page({
         {/* Hero */}
         <section className="relative flex min-h-[100dvh] items-end overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src={heroImg}
-              alt=""
-              fill
-              priority
-              placeholder="blur"
-              sizes="100vw"
-              className="kenburns photo-tone object-cover object-[70%_center]"
-            />
+            <div className="hero-parallax absolute inset-x-0 -top-[6%] h-[112%]">
+              <Image
+                src={heroImg}
+                alt=""
+                fill
+                priority
+                placeholder="blur"
+                sizes="100vw"
+                className="kenburns photo-tone object-cover object-[70%_center]"
+              />
+            </div>
           </div>
           {/* Cinematic scrims: image reads on the right, text stays legible left */}
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/15" />
@@ -117,17 +141,16 @@ export default async function Page({
                 {t.hero.kicker}
               </p>
             </div>
-            <h1 className="rise rise-d2 font-display max-w-5xl text-4xl font-semibold uppercase leading-[0.98] tracking-tight md:text-6xl lg:text-7xl">
-              {t.hero.title1}
-              <br />
-              {t.hero.title2}
+            <h1 className="font-display max-w-5xl text-4xl font-semibold uppercase leading-[0.98] tracking-tight md:text-6xl lg:text-7xl">
+              <span className="rise rise-d2 block">{t.hero.title1}</span>
+              <span className="rise rise-d3 block">{t.hero.title2}</span>
             </h1>
-            <p className="rise rise-d3 mt-6 max-w-md text-base leading-relaxed text-paper/75 md:text-lg">
+            <p className="rise rise-d4 mt-6 max-w-md text-base leading-relaxed text-paper/75 md:text-lg">
               {t.hero.subtitle}
             </p>
             <a
               href="#contacts"
-              className="rise rise-d4 group mt-10 inline-flex items-center gap-3 bg-brass px-9 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:bg-brass-bright hover:gap-4 active:translate-y-px"
+              className="rise rise-d5 group mt-10 inline-flex items-center gap-3 bg-brass px-9 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:bg-brass-bright hover:gap-4 active:translate-y-px"
             >
               {t.hero.cta}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -214,6 +237,21 @@ export default async function Page({
           </div>
         </section>
 
+        {/* Sourcing statement */}
+        <section className="border-y border-hairline">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-28">
+            <div className="reveal max-w-4xl">
+              <div className="hairline-x mb-8 h-px w-16 bg-brass" />
+              <h2 className="font-display text-3xl font-medium uppercase leading-[1.05] tracking-tight md:text-5xl">
+                {t.sourcing.heading}
+              </h2>
+              <p className="mt-7 max-w-2xl text-lg leading-relaxed text-paper/75 md:text-xl">
+                {t.sourcing.body}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Directions */}
         <section id="directions" className="scroll-mt-16 bg-ink-2">
           <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
@@ -260,6 +298,42 @@ export default async function Page({
           </div>
         </section>
 
+        {/* Process (signature scroll-drawn timeline) */}
+        <section id="process" className="scroll-mt-16">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+            <h2 className="font-display reveal text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+              {t.process.heading}
+            </h2>
+            <div className="hairline-x mt-6 h-px w-16 bg-brass" />
+            <p className="reveal mt-6 text-base text-muted">{t.process.sub}</p>
+
+            <ol className="process-track relative mt-16 max-w-3xl">
+              <span
+                className="process-line absolute bottom-3 left-[19px] top-3 w-px bg-brass/50"
+                aria-hidden
+              />
+              {t.process.steps.map((step, i) => (
+                <li
+                  key={i}
+                  className="reveal relative grid grid-cols-[40px_1fr] gap-5 pb-12 last:pb-0 md:gap-8"
+                >
+                  <div className="relative z-10 flex h-10 w-10 items-center justify-center border border-brass/50 bg-ink font-display text-sm text-brass">
+                    0{i + 1}
+                  </div>
+                  <div className="pt-1.5">
+                    <h3 className="font-display text-2xl font-medium uppercase tracking-wide md:text-3xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 max-w-xl text-base leading-relaxed text-muted">
+                      {step.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* Audience */}
         <section className="grid grid-cols-1 md:grid-cols-2">
           {(
@@ -292,6 +366,52 @@ export default async function Page({
               </div>
             </div>
           ))}
+        </section>
+
+        {/* Location */}
+        <section id="location" className="scroll-mt-16 bg-ink-2">
+          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-28">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="reveal lg:col-span-5">
+                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+                  {t.location.heading}
+                </h2>
+                <div className="hairline-x mt-6 h-px w-16 bg-brass" />
+                <p className="mt-6 max-w-sm text-base leading-relaxed text-muted">
+                  {t.location.sub}
+                </p>
+                <p className="mt-8 max-w-sm font-display text-xl leading-relaxed">
+                  {t.about.addressValue}
+                </p>
+                <a
+                  href={mapDirections}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-8 inline-flex items-center gap-3 border border-brass px-8 py-4 text-[13px] font-bold uppercase tracking-[0.14em] text-brass transition-colors hover:bg-brass hover:text-ink"
+                >
+                  {t.location.cta}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </a>
+              </div>
+              <div className="reveal relative min-h-[340px] overflow-hidden border border-hairline lg:col-span-7 lg:min-h-[440px]">
+                <iframe
+                  title={t.location.heading}
+                  src={mapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 h-full w-full"
+                  style={{
+                    border: 0,
+                    filter: "grayscale(0.5) contrast(1.05) brightness(0.85)",
+                  }}
+                />
+                <span className="pointer-events-none absolute left-4 top-4 h-7 w-7 border-l border-t border-brass/70" />
+                <span className="pointer-events-none absolute bottom-4 right-4 h-7 w-7 border-b border-r border-brass/70" />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Contacts */}
