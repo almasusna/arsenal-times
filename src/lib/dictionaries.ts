@@ -1,11 +1,11 @@
-export type Locale = "ru" | "kk" | "en" | "zh" | "tr";
+export type Locale = "ru" | "kz" | "en" | "zh" | "tr";
 
-export const locales: Locale[] = ["ru", "kk", "en", "zh", "tr"];
+export const locales: Locale[] = ["ru", "kz", "en", "zh", "tr"];
 export const defaultLocale: Locale = "ru";
 
 export const localeNames: Record<Locale, string> = {
   ru: "Рус",
-  kk: "Қаз",
+  kz: "Қаз",
   en: "Eng",
   zh: "中文",
   tr: "Tür",
@@ -124,7 +124,7 @@ const dictionaries = {
       city: "г. Кокшетау, Республика Казахстан",
     },
   },
-  kk: {
+  kz: {
     meta: {
       title: "Арсенал Таймас | Қазақстандағы аңшылық және спорттық ату қаруы",
       description:

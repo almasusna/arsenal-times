@@ -5,9 +5,9 @@ import { locales, defaultLocale } from "@/lib/dictionaries";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Legacy alias: old /kz links keep working, redirected to /kk
-  if (pathname === "/kz" || pathname.startsWith("/kz/")) {
-    request.nextUrl.pathname = pathname.replace(/^\/kz/, "/kk");
+  // Legacy alias: old /kk links keep working, redirected to /kz
+  if (pathname === "/kk" || pathname.startsWith("/kk/")) {
+    request.nextUrl.pathname = pathname.replace(/^\/kk/, "/kz");
     return NextResponse.redirect(request.nextUrl);
   }
 
