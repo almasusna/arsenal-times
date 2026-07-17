@@ -31,7 +31,7 @@ const dictionaries = {
     nav: {
       about: "О компании",
       directions: "Направления",
-      process: "Как мы работаем",
+      location: "Как нас найти",
       contacts: "Контакты",
     },
     hero: {
@@ -119,28 +119,6 @@ const dictionaries = {
       heading: "Отбор без компромиссов",
       body: "Мы работаем только с производителями, чью репутацию и сертификацию можно проверить. Каждая поставка официальная, с полным пакетом документов.",
     },
-    process: {
-      heading: "Как мы работаем",
-      sub: "От первого разговора до сервиса после покупки",
-      steps: [
-        {
-          title: "Подбор и консультация",
-          desc: "Обсуждаем ваши задачи и подбираем оружие под профиль охоты или спортивной стрельбы.",
-        },
-        {
-          title: "Оформление документов",
-          desc: "Сопровождаем получение разрешительных документов в соответствии с законодательством РК.",
-        },
-        {
-          title: "Официальная поставка",
-          desc: "Прямой импорт от производителя с полным таможенным оформлением.",
-        },
-        {
-          title: "Сервис и поддержка",
-          desc: "Обслуживание, хранение и консультации на всём сроке владения.",
-        },
-      ],
-    },
     location: {
       heading: "Как нас найти",
       sub: "Приезжайте на консультацию в Кокшетау",
@@ -175,7 +153,7 @@ const dictionaries = {
     nav: {
       about: "Компания туралы",
       directions: "Бағыттар",
-      process: "Қалай жұмыс істейміз",
+      location: "Бізді табу",
       contacts: "Байланыс",
     },
     hero: {
@@ -263,28 +241,6 @@ const dictionaries = {
       heading: "Ымырасыз таңдау",
       body: "Біз тек беделі мен сертификаттауын тексеруге болатын өндірушілермен жұмыс істейміз. Әрбір жеткізілім ресми, құжаттардың толық топтамасымен.",
     },
-    process: {
-      heading: "Қалай жұмыс істейміз",
-      sub: "Алғашқы әңгімеден сатып алғаннан кейінгі сервиске дейін",
-      steps: [
-        {
-          title: "Таңдау және кеңес",
-          desc: "Мақсаттарыңызды талқылап, аңшылық не спорттық ату бейініне сай қару таңдаймыз.",
-        },
-        {
-          title: "Құжаттарды рәсімдеу",
-          desc: "ҚР заңнамасына сәйкес рұқсат құжаттарын алуды сүйемелдейміз.",
-        },
-        {
-          title: "Ресми жеткізу",
-          desc: "Өндірушіден тікелей импорт, толық кедендік рәсімдеумен.",
-        },
-        {
-          title: "Сервис және қолдау",
-          desc: "Иелену мерзімі бойы қызмет көрсету, сақтау және кеңес беру.",
-        },
-      ],
-    },
     location: {
       heading: "Бізді қалай табуға болады",
       sub: "Кеңеске Көкшетауға келіңіз",
@@ -319,7 +275,7 @@ const dictionaries = {
     nav: {
       about: "About",
       directions: "What we do",
-      process: "How we work",
+      location: "Find us",
       contacts: "Contacts",
     },
     hero: {
@@ -407,28 +363,6 @@ const dictionaries = {
       heading: "Selection without compromise",
       body: "We work only with manufacturers whose reputation and certification can be verified. Every delivery is official, with a full set of documents.",
     },
-    process: {
-      heading: "How we work",
-      sub: "From the first conversation to after-sale service",
-      steps: [
-        {
-          title: "Selection and advice",
-          desc: "We discuss your goals and match a firearm to your hunting or sport shooting profile.",
-        },
-        {
-          title: "Permit paperwork",
-          desc: "We guide you through obtaining the required permits under the laws of Kazakhstan.",
-        },
-        {
-          title: "Official delivery",
-          desc: "Direct import from the manufacturer with full customs clearance.",
-        },
-        {
-          title: "Service and support",
-          desc: "Maintenance, storage and advice throughout the ownership period.",
-        },
-      ],
-    },
     location: {
       heading: "Find us",
       sub: "Visit us for a consultation in Kokshetau",
@@ -463,7 +397,7 @@ const dictionaries = {
     nav: {
       about: "公司简介",
       directions: "业务方向",
-      process: "服务流程",
+      location: "如何找到我们",
       contacts: "联系方式",
     },
     hero: {
@@ -550,28 +484,6 @@ const dictionaries = {
       heading: "严格甄选，绝不妥协",
       body: "我们只与信誉和认证可查证的制造商合作。每一批货物均为官方进口，附有完整文件。",
     },
-    process: {
-      heading: "服务流程",
-      sub: "从初次沟通到售后服务",
-      steps: [
-        {
-          title: "选购与咨询",
-          desc: "了解您的需求，为您的狩猎或射击运动匹配合适的枪械。",
-        },
-        {
-          title: "证件办理",
-          desc: "依照哈萨克斯坦法律，协助您办理所需的许可证件。",
-        },
-        {
-          title: "官方供货",
-          desc: "从制造商直接进口，办理完整的海关手续。",
-        },
-        {
-          title: "服务与支持",
-          desc: "在整个使用期内提供保养、存放与咨询。",
-        },
-      ],
-    },
     location: {
       heading: "如何找到我们",
       sub: "欢迎前往科克舍套咨询",
@@ -606,7 +518,7 @@ const dictionaries = {
     nav: {
       about: "Hakkımızda",
       directions: "Faaliyetler",
-      process: "Nasıl çalışırız",
+      location: "Bizi bulun",
       contacts: "İletişim",
     },
     hero: {
@@ -693,28 +605,6 @@ const dictionaries = {
     sourcing: {
       heading: "Ödünsüz seçim",
       body: "Yalnızca itibarı ve sertifikasyonu doğrulanabilen üreticilerle çalışırız. Her teslimat resmidir ve eksiksiz belgelerle gelir.",
-    },
-    process: {
-      heading: "Nasıl çalışırız",
-      sub: "İlk görüşmeden satış sonrası servise kadar",
-      steps: [
-        {
-          title: "Seçim ve danışmanlık",
-          desc: "İhtiyaçlarınızı görüşüp avcılık veya atıcılık profilinize uygun silahı seçiyoruz.",
-        },
-        {
-          title: "Belge işlemleri",
-          desc: "Kazakistan mevzuatına göre gerekli izin belgelerinin alınmasına eşlik ediyoruz.",
-        },
-        {
-          title: "Resmi teslimat",
-          desc: "Üreticiden doğrudan ithalat, eksiksiz gümrük işlemleriyle.",
-        },
-        {
-          title: "Servis ve destek",
-          desc: "Sahiplik süresi boyunca bakım, saklama ve danışmanlık.",
-        },
-      ],
     },
     location: {
       heading: "Bizi bulun",

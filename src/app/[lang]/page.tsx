@@ -98,7 +98,7 @@ export default async function Page({
               items={[
                 { href: "#about", label: t.nav.about },
                 { href: "#directions", label: t.nav.directions },
-                { href: "#process", label: t.nav.process },
+                { href: "#location", label: t.nav.location },
                 { href: "#contacts", label: t.nav.contacts },
               ]}
             />
@@ -141,11 +141,11 @@ export default async function Page({
                 {t.hero.kicker}
               </p>
             </div>
-            <h1 className="font-display max-w-5xl text-4xl font-semibold uppercase leading-[0.98] tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="t-hero font-display max-w-5xl font-semibold uppercase">
               <span className="rise rise-d2 block">{t.hero.title1}</span>
               <span className="rise rise-d3 block">{t.hero.title2}</span>
             </h1>
-            <p className="rise rise-d4 mt-6 max-w-md text-base leading-relaxed text-paper/75 md:text-lg">
+            <p className="rise rise-d4 t-body mt-8 max-w-md text-paper/75">
               {t.hero.subtitle}
             </p>
             <a
@@ -162,17 +162,17 @@ export default async function Page({
 
         {/* Trust strip */}
         <section className="border-b border-hairline">
-          <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-10 px-4 py-16 sm:grid-cols-2 md:px-8 lg:grid-cols-4 lg:gap-y-0">
+          <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-10 px-4 py-20 sm:grid-cols-2 md:px-8 lg:grid-cols-4 lg:gap-y-0">
             {t.trust.map((item, i) => (
               <div
                 key={i}
                 className="reveal group border-l border-hairline pl-6 lg:pr-8"
               >
-                <div className="hairline-x mb-3 h-px w-8 bg-brass transition-[width] duration-500 group-hover:w-14" />
+                <div className="hairline-x mb-4 h-px w-8 bg-brass transition-[width] duration-500 group-hover:w-14" />
                 <h3 className="font-display text-lg font-medium uppercase tracking-wide">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="mt-2.5 text-sm leading-[1.65] text-muted">
                   {item.desc}
                 </p>
               </div>
@@ -182,17 +182,17 @@ export default async function Page({
 
         {/* About */}
         <section id="about" className="scroll-mt-16">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1400px] px-4 py-28 md:px-8 md:py-40">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="reveal lg:col-span-6">
-                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+                <h2 className="t-section font-display font-semibold uppercase">
                   {t.about.heading}
                 </h2>
-                <div className="hairline-x mt-6 h-px w-16 bg-brass" />
-                <p className="mt-8 text-lg leading-relaxed text-paper/85">
+                <div className="hairline-x mt-7 h-px w-16 bg-brass" />
+                <p className="mt-9 text-lg leading-[1.65] text-paper/85">
                   {t.about.p1}
                 </p>
-                <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-muted">
+                <p className="t-body mt-5 max-w-[60ch] text-muted">
                   {t.about.p2}
                 </p>
               </div>
@@ -239,13 +239,13 @@ export default async function Page({
 
         {/* Sourcing statement */}
         <section className="border-y border-hairline">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-28">
-            <div className="reveal max-w-4xl">
-              <div className="hairline-x mb-8 h-px w-16 bg-brass" />
-              <h2 className="font-display text-3xl font-medium uppercase leading-[1.05] tracking-tight md:text-5xl">
+          <div className="mx-auto max-w-[1400px] px-4 py-28 md:px-8 md:py-36">
+            <div className="reveal max-w-5xl">
+              <div className="hairline-x mb-10 h-px w-16 bg-brass" />
+              <h2 className="t-statement font-display font-medium uppercase text-paper">
                 {t.sourcing.heading}
               </h2>
-              <p className="mt-7 max-w-2xl text-lg leading-relaxed text-paper/75 md:text-xl">
+              <p className="mt-8 max-w-2xl text-lg leading-[1.7] text-muted md:text-xl">
                 {t.sourcing.body}
               </p>
             </div>
@@ -254,14 +254,12 @@ export default async function Page({
 
         {/* Directions */}
         <section id="directions" className="scroll-mt-16 bg-ink-2">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
-            <h2 className="font-display reveal text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+          <div className="mx-auto max-w-[1400px] px-4 py-28 md:px-8 md:py-40">
+            <h2 className="t-section font-display reveal font-semibold uppercase">
               {t.directions.heading}
             </h2>
-            <div className="hairline-x mt-6 h-px w-16 bg-brass" />
-            <p className="reveal mt-6 text-base text-muted">
-              {t.directions.sub}
-            </p>
+            <div className="hairline-x mt-7 h-px w-16 bg-brass" />
+            <p className="reveal t-body mt-6 text-muted">{t.directions.sub}</p>
             <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
               {t.directions.items.map((item, i) => (
                 <article
@@ -282,55 +280,29 @@ export default async function Page({
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="photo-tone object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent transition-opacity duration-500 group-hover:from-ink/95" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <div className="mb-3 h-px w-0 bg-brass transition-[width] duration-500 group-hover:w-10" />
-                    <h3 className="font-display text-2xl font-medium uppercase tracking-wide md:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-paper/70">
-                      {item.desc}
-                    </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent transition-all duration-500 group-hover:from-ink group-hover:via-ink/55" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-9">
+                    <div className="flex items-end justify-between gap-4">
+                      <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1">
+                        <h3 className="t-tile font-display font-medium uppercase">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-paper/65">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <span
+                        aria-hidden
+                        className="mb-1 shrink-0 translate-x-2 text-brass opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                      >
+                        &rarr;
+                      </span>
+                    </div>
+                    <div className="mt-5 h-px w-0 bg-brass transition-[width] duration-700 ease-out group-hover:w-full" />
                   </div>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Process (signature scroll-drawn timeline) */}
-        <section id="process" className="scroll-mt-16">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
-            <h2 className="font-display reveal text-4xl font-semibold uppercase tracking-tight md:text-5xl">
-              {t.process.heading}
-            </h2>
-            <div className="hairline-x mt-6 h-px w-16 bg-brass" />
-            <p className="reveal mt-6 text-base text-muted">{t.process.sub}</p>
-
-            <ol className="process-track relative mt-16 max-w-3xl">
-              <span
-                className="process-line absolute bottom-3 left-[19px] top-3 w-px bg-brass/50"
-                aria-hidden
-              />
-              {t.process.steps.map((step, i) => (
-                <li
-                  key={i}
-                  className="reveal relative grid grid-cols-[40px_1fr] gap-5 pb-12 last:pb-0 md:gap-8"
-                >
-                  <div className="relative z-10 flex h-10 w-10 items-center justify-center border border-brass/50 bg-ink font-display text-sm text-brass">
-                    0{i + 1}
-                  </div>
-                  <div className="pt-1.5">
-                    <h3 className="font-display text-2xl font-medium uppercase tracking-wide md:text-3xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 max-w-xl text-base leading-relaxed text-muted">
-                      {step.desc}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
 
@@ -355,12 +327,12 @@ export default async function Page({
                 className="photo-tone object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/5 transition-opacity duration-500 group-hover:from-ink/90" />
-              <div className="relative p-8 md:p-12">
-                <div className="mb-4 h-px w-10 bg-brass transition-[width] duration-500 group-hover:w-16" />
-                <h3 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+              <div className="relative p-8 md:p-14">
+                <div className="mb-5 h-px w-10 bg-brass transition-[width] duration-500 group-hover:w-20" />
+                <h3 className="t-panel font-display font-semibold uppercase">
                   {panel.title}
                 </h3>
-                <p className="mt-3 max-w-sm text-base leading-relaxed text-paper/75">
+                <p className="t-body mt-4 max-w-sm text-paper/75">
                   {panel.desc}
                 </p>
               </div>
@@ -370,14 +342,14 @@ export default async function Page({
 
         {/* Location */}
         <section id="location" className="scroll-mt-16 bg-ink-2">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-28">
+          <div className="mx-auto max-w-[1400px] px-4 py-28 md:px-8 md:py-36">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="reveal lg:col-span-5">
-                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-5xl">
+                <h2 className="t-section font-display font-semibold uppercase">
                   {t.location.heading}
                 </h2>
-                <div className="hairline-x mt-6 h-px w-16 bg-brass" />
-                <p className="mt-6 max-w-sm text-base leading-relaxed text-muted">
+                <div className="hairline-x mt-7 h-px w-16 bg-brass" />
+                <p className="t-body mt-6 max-w-sm text-muted">
                   {t.location.sub}
                 </p>
                 <p className="mt-8 max-w-sm font-display text-xl leading-relaxed">
@@ -404,7 +376,10 @@ export default async function Page({
                   className="absolute inset-0 h-full w-full"
                   style={{
                     border: 0,
-                    filter: "grayscale(0.5) contrast(1.05) brightness(0.85)",
+                    // Inverted + hue-rotated so the map reads dark and sits
+                    // inside the gunmetal palette instead of glowing white.
+                    filter:
+                      "invert(0.92) hue-rotate(180deg) saturate(0.45) brightness(0.95) contrast(0.9)",
                   }}
                 />
                 <span className="pointer-events-none absolute left-4 top-4 h-7 w-7 border-l border-t border-brass/70" />
@@ -416,14 +391,14 @@ export default async function Page({
 
         {/* Contacts */}
         <section id="contacts" className="scroll-mt-16 border-t border-hairline">
-          <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1400px] px-4 py-28 md:px-8 md:py-40">
             <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
               <div className="reveal lg:col-span-5">
-                <h2 className="font-display text-4xl font-semibold uppercase tracking-tight md:text-6xl">
+                <h2 className="t-section font-display font-semibold uppercase">
                   {t.contacts.heading}
                 </h2>
-                <div className="hairline-x mt-6 h-px w-16 bg-brass" />
-                <p className="mt-6 max-w-xs text-base leading-relaxed text-muted">
+                <div className="hairline-x mt-7 h-px w-16 bg-brass" />
+                <p className="t-body mt-6 max-w-xs text-muted">
                   {t.contacts.sub}
                 </p>
               </div>
@@ -436,7 +411,7 @@ export default async function Page({
                     <dd className="sm:col-span-2">
                       <a
                         href={contactInfo.phoneHref}
-                        className="font-display text-2xl font-medium tracking-wide transition-colors hover:text-brass md:text-3xl"
+                        className="t-mega font-display font-medium transition-colors hover:text-brass"
                       >
                         {contactInfo.phone}
                       </a>
