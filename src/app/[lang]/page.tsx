@@ -49,6 +49,9 @@ export default async function Page({
       {/* Thin brass scroll-progress bar */}
       <div className="scroll-progress" aria-hidden />
 
+      {/* Film-grain overlay for the whole page */}
+      <div className="grain" aria-hidden />
+
       {/* Topbar */}
       <header
         id="site-header"
@@ -68,31 +71,34 @@ export default async function Page({
             </span>
           </a>
           <nav className="hidden items-center gap-8 text-[13px] text-paper/75 md:flex">
-            <a href="#about" className="transition-colors hover:text-brass">
+            <a
+              href="#about"
+              className="nav-link transition-colors hover:text-paper"
+            >
               {t.nav.about}
             </a>
             <a
               href="#directions"
-              className="transition-colors hover:text-brass"
+              className="nav-link transition-colors hover:text-paper"
             >
               {t.nav.directions}
             </a>
-            <a href="#contacts" className="transition-colors hover:text-brass">
+            <a
+              href="#contacts"
+              className="nav-link transition-colors hover:text-paper"
+            >
               {t.nav.contacts}
             </a>
           </nav>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <a
               href={contactInfo.phoneHref}
               className="hidden text-[13px] font-medium text-paper transition-colors hover:text-brass lg:block"
             >
               {contactInfo.phone}
             </a>
-            <div className="hidden md:block">
-              <LanguageSwitcher current={locale} />
-            </div>
+            <LanguageSwitcher current={locale} />
             <MobileNav
-              current={locale}
               phone={contactInfo.phone}
               phoneHref={contactInfo.phoneHref}
               items={[

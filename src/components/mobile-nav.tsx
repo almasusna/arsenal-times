@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import type { Locale } from "@/lib/dictionaries";
 
 type NavItem = { href: string; label: string };
 
@@ -11,12 +9,10 @@ export function MobileNav({
   items,
   phone,
   phoneHref,
-  current,
 }: {
   items: NavItem[];
   phone: string;
   phoneHref: string;
-  current: Locale;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -96,9 +92,6 @@ export function MobileNav({
             >
               {phone}
             </a>
-            <div className="-ml-2">
-              <LanguageSwitcher current={current} />
-            </div>
           </div>
         </div>,
           document.body,
