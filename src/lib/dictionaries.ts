@@ -11,6 +11,16 @@ export const localeNames: Record<Locale, string> = {
   tr: "Tür",
 };
 
+// URL segment `kz` (country code) maps to the real language tag `kk` (Kazakh)
+// for the html lang attribute and hreflang.
+export const localeToBcp47: Record<Locale, string> = {
+  ru: "ru",
+  kz: "kk",
+  en: "en",
+  zh: "zh",
+  tr: "tr",
+};
+
 const dictionaries = {
   ru: {
     meta: {
@@ -21,6 +31,7 @@ const dictionaries = {
     nav: {
       about: "О компании",
       directions: "Направления",
+      location: "Как нас найти",
       contacts: "Контакты",
     },
     hero: {
@@ -104,6 +115,15 @@ const dictionaries = {
         desc: "Точное оружие и комплектующие для стенда и практической стрельбы",
       },
     },
+    sourcing: {
+      heading: "Отбор без компромиссов",
+      body: "Мы работаем только с производителями, чью репутацию и сертификацию можно проверить. Каждая поставка официальная, с полным пакетом документов.",
+    },
+    location: {
+      heading: "Как нас найти",
+      sub: "Приезжайте на консультацию в Кокшетау",
+      cta: "Построить маршрут",
+    },
     contacts: {
       heading: "Контакты",
       sub: "Ответим на вопросы и поможем с выбором",
@@ -133,6 +153,7 @@ const dictionaries = {
     nav: {
       about: "Компания туралы",
       directions: "Бағыттар",
+      location: "Бізді табу",
       contacts: "Байланыс",
     },
     hero: {
@@ -216,6 +237,15 @@ const dictionaries = {
         desc: "Стенд пен практикалық атуға арналған дәл қару мен жабдықтар",
       },
     },
+    sourcing: {
+      heading: "Ымырасыз таңдау",
+      body: "Біз тек беделі мен сертификаттауын тексеруге болатын өндірушілермен жұмыс істейміз. Әрбір жеткізілім ресми, құжаттардың толық топтамасымен.",
+    },
+    location: {
+      heading: "Бізді қалай табуға болады",
+      sub: "Кеңеске Көкшетауға келіңіз",
+      cta: "Бағыт салу",
+    },
     contacts: {
       heading: "Байланыс",
       sub: "Сұрақтарыңызға жауап беріп, таңдауға көмектесеміз",
@@ -245,6 +275,7 @@ const dictionaries = {
     nav: {
       about: "About",
       directions: "What we do",
+      location: "Find us",
       contacts: "Contacts",
     },
     hero: {
@@ -328,6 +359,15 @@ const dictionaries = {
         desc: "Precise firearms and components for clay and practical shooting",
       },
     },
+    sourcing: {
+      heading: "Selection without compromise",
+      body: "We work only with manufacturers whose reputation and certification can be verified. Every delivery is official, with a full set of documents.",
+    },
+    location: {
+      heading: "Find us",
+      sub: "Visit us for a consultation in Kokshetau",
+      cta: "Get directions",
+    },
     contacts: {
       heading: "Contacts",
       sub: "We answer questions and help with your choice",
@@ -357,6 +397,7 @@ const dictionaries = {
     nav: {
       about: "公司简介",
       directions: "业务方向",
+      location: "如何找到我们",
       contacts: "联系方式",
     },
     hero: {
@@ -439,6 +480,15 @@ const dictionaries = {
         desc: "用于飞碟与实用射击的精准枪械及配件",
       },
     },
+    sourcing: {
+      heading: "严格甄选，绝不妥协",
+      body: "我们只与信誉和认证可查证的制造商合作。每一批货物均为官方进口，附有完整文件。",
+    },
+    location: {
+      heading: "如何找到我们",
+      sub: "欢迎前往科克舍套咨询",
+      cta: "获取路线",
+    },
     contacts: {
       heading: "联系方式",
       sub: "为您解答疑问并协助选购",
@@ -468,6 +518,7 @@ const dictionaries = {
     nav: {
       about: "Hakkımızda",
       directions: "Faaliyetler",
+      location: "Bizi bulun",
       contacts: "İletişim",
     },
     hero: {
@@ -550,6 +601,15 @@ const dictionaries = {
         title: "Sportif atıcılara",
         desc: "Trap-skeet ve pratik atıcılık için hassas silahlar ve aksesuarlar",
       },
+    },
+    sourcing: {
+      heading: "Ödünsüz seçim",
+      body: "Yalnızca itibarı ve sertifikasyonu doğrulanabilen üreticilerle çalışırız. Her teslimat resmidir ve eksiksiz belgelerle gelir.",
+    },
+    location: {
+      heading: "Bizi bulun",
+      sub: "Danışmanlık için Kökşetau'a gelin",
+      cta: "Yol tarifi al",
     },
     contacts: {
       heading: "İletişim",

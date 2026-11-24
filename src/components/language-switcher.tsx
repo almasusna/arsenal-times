@@ -8,7 +8,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
         locale === current ? (
           <span
             key={locale}
-            className="whitespace-nowrap px-2 py-1 text-[12px] font-semibold tracking-wide text-brass"
+            className="whitespace-nowrap px-1.5 py-1 text-[11px] font-semibold tracking-wide text-brass sm:px-2 sm:text-[12px]"
           >
             {localeNames[locale]}
           </span>
@@ -16,7 +16,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
           <Link
             key={locale}
             href={`/${locale}`}
-            className="whitespace-nowrap px-2 py-1 text-[12px] font-medium tracking-wide text-muted transition-colors hover:text-paper"
+            className="whitespace-nowrap px-1.5 py-1 text-[11px] font-medium tracking-wide text-muted transition-colors hover:text-paper sm:px-2 sm:text-[12px]"
           >
             {localeNames[locale]}
           </Link>
